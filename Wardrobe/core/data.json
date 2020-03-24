@@ -1,0 +1,16 @@
+
+[{
+"model":"core.Item",
+"pk":1,
+"fields":{
+"title":"Messi",
+"price":100.0,
+"category":"SW",
+"label":"LM10",
+"slug":"messi1",
+"description":"goat",
+"image":"messi.jpg"
+
+}
+}
+]			
