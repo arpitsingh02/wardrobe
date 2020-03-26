@@ -31,11 +31,11 @@
             <p class="lead">
               {% if object.discount_price %}
               <span class="mr-1">
-                <del>${{ object.price }}</del>
+                <del>&#x20b9;{{ object.price }}</del>
               </span>
-              <span>${{ object.discount_price }}</span>
+              <span>&#x20b9;{{ object.discount_price }}</span>
               {% else %}
-              <span>${{ object.price }}</span>
+              <span>&#x20b9;{{ object.price }}</span>
               {% endif %}
             </p>
 
@@ -117,16 +117,26 @@
         Grid column
 
       </div> -->
-              <div class="row wow fadeIn">
-            	
-          {% for item in object_list %}
-          <div class="col-lg-4 col-md-6 mb-4">
 
-            <div class="card">
+      <!--Grid row-->
+
+    </div>
+  </main>
+
+{% endblock content %}
+{% block extra_body %}
+        <h2> You may also like</h2>
+          <div class="row wow fadeIn">     {% for item in items %}
+            <div class="col-lg-2 col-md-6 mb-4 align-items-stretch">
+     
+          
+         
+<!-- 
+            <div class="card" style="width: 25em;">
 
               <div class="view overlay">
                 {% comment %} <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" class="card-img-top" {% endcomment %}
-                <img src="{{ item.image.url }}" class="card-img-top" width="200" height="300">
+                <img src="{{ item.image.url }}" class="card-img" width="90" height="180">
                 <a href="{{ item.get_absolute_url }}">
                   <div class="mask rgba-white-slight"></div>
                 </a>
@@ -150,23 +160,32 @@
                   {% if item.discount_price %}
                   {{ item.discount_price }}
                   {% else %}
-		{{ item.get_absolute_url }}
+   
                   {{ item.price }}
-		
+    
                   {% endif %}
                   </strong>
                 </h4>
 
               </div>
 
-            </div>
+            </div> -->
+  
+  <div class="card h-100" style="width: 13rem;">
+  <img class="card-img-top" src="{{item.image.url}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title" align="center">{{item.title}}</h5>
+
+  </div>
+  <ul class="list-group list-group-flush" style="margin:auto">
+    <li class="list-group-item" >&#x20b9;{{item.price}}</li>
+    
+  </ul>
+  
+</div>
 
           </div>
           {% endfor %}
         </div>
-      <!--Grid row-->
 
-    </div>
-  </main>
-
-{% endblock content %}
+{% endblock %}
