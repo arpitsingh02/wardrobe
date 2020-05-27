@@ -348,7 +348,27 @@ class HomeView(ListView):
     paginate_by = 10
     template_name = "home.html"
 
+class ClothView(ListView):
+    model=Item
+    template_name="home.html"
+    def get_queryset(self):
+        # print(self.kwargs)
+        return Item.objects.filter(category=self.kwargs['slug'])
+    def get_context_data(self, **kwargs):
+        context = super(ClothView, self).get_context_data(**kwargs)
+        return context
+class ThemeView(ListView):
+    model=Item
+    template_name="home.html"
+    def get_queryset(self):
+        # self.type=get_object_or_404(Item,category='TEE')
+        print(self.kwargs)
+        return Item.objects.filter(theme=self.kwargs['slug'])
+    def get_context_data(self, **kwargs):
+        context = super(ThemeView, self).get_context_data(**kwargs)
 
+           
+        return context
 class OrderSummaryView(LoginRequiredMixin, View):
     def get(self, *args, **kwargs):
         try:
@@ -368,6 +388,7 @@ class ItemDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(ItemDetailView, self).get_context_data(**kwargs)
         context['items']= Item.objects.all()
+        
         return context
 
 

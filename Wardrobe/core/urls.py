@@ -6,16 +6,20 @@ from .views import (
     OrderSummaryView,
     add_to_cart,
     remove_from_cart,
-    remove_single_item_from_cart,
+    remove_single_item_from_cart,ThemeView,
     PaymentView,
     AddCouponView,
-    RequestRefundView
+    RequestRefundView,ClothView
 )
 
 app_name = 'core'
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
+    path('clothes/<slug>/',ClothView.as_view(),name='clothes'),
+    path('accessories/<slug>/',ClothView.as_view(),name='accs'),
+    path('themes/<slug>/',ThemeView.as_view(),name='themes'),
+    
     path('checkout/', CheckoutView.as_view(), name='checkout'),
     path('order-summary/', OrderSummaryView.as_view(), name='order-summary'),
     path('product/<slug>/', ItemDetailView.as_view(), name='product'),
